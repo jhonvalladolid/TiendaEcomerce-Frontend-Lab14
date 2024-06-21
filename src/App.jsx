@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import BarraNavegacion from './components/BarraNavegacion'; // Asegúrate de importar el componente de navegación
+import BarraNavegacion from './components/BarraNavegacion';
 import InicioPage from './pages/InicioPage';
 import TiendaPage from './pages/TiendaPage';
 import ContactoPage from './pages/ContactoPage';
@@ -10,7 +10,7 @@ import './App.css';
 function App() {
   return (
     <Router>
-      <BarraNavegacion />  {/* Usamos el componente de navegación aquí */}
+      <BarraNavegacion />
       <Routes>
         <Route path="/" element={<InicioPage />} />
         <Route path="/tienda" element={<TiendaPage />} />

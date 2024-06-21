@@ -1,7 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-// Componente para la barra de navegación
 function BarraNavegacion() {
   return (
     <nav>
