@@ -1,11 +1,14 @@
 import React from 'react';
+import TituloContacto from '../components/TituloContacto';
+import FormularioContacto from '../components/FormularioContacto';
+import Mapa from '../components/Mapa';
 
 function ContactoPage() {
   return (
     <div>
-      <h1>Contacto</h1>
-      <p>¿Tienes alguna pregunta? No dudes en contactarnos.</p>
-      {/* Incluir formulario de contacto o información de contacto aquí */}
+      <TituloContacto/>
+      <Mapa/>
+      <FormularioContacto/>
     </div>
   );
 }

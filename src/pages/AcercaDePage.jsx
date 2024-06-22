@@ -1,10 +1,14 @@
 import React from 'react';
+import AcercaDeNosotros from '../components/AcercaDeNosotros';
+import NuestrosServicios from '../components/NuestrosServicios';
+import NuestrasMarcas from '../components/NuestrasMarcas';
 
 function AcercaDePage() {
   return (
     <div>
-      <h1>Acerca de</h1>
-      <p>Conoce más sobre nuestra misión, visión y valores.</p>
+      <AcercaDeNosotros/>
+      <NuestrosServicios/>
+      <NuestrasMarcas/>
     </div>
   );
 }

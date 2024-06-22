@@ -5,7 +5,8 @@ import InicioPage from './pages/InicioPage';
 import TiendaPage from './pages/TiendaPage';
 import ContactoPage from './pages/ContactoPage';
 import AcercaDePage from './pages/AcercaDePage';
-import './App.css';
+import ProductoDetallePage from './pages/ProductoDetallePage';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -16,7 +17,9 @@ function App() {
         <Route path="/tienda" element={<TiendaPage />} />
         <Route path="/contacto" element={<ContactoPage />} />
         <Route path="/acerca-de" element={<AcercaDePage />} />
+        <Route path="/producto/:id" element={<ProductoDetallePage />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }

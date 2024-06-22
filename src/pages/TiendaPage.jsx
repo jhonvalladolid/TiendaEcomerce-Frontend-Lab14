@@ -1,11 +1,10 @@
 import React from 'react';
+import SeccionTienda from '../components/SeccionTienda/SeccionTienda';
 
 function TiendaPage() {
   return (
     <div>
-      <h1>Tienda</h1>
-      <p>Aquí encontrarás todos nuestros productos disponibles para la venta.</p>
-      {/* Aquí puedes incluir componentes para listar productos */}
+      <SeccionTienda/>
     </div>
   );
 }

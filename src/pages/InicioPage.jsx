@@ -1,10 +1,16 @@
 import React from 'react';
+import Carrusel from '../components/Carrusel';
+import SearchModal from '../components/SearchModal';
+import CategoriesSection from '../components/CategoriesSection';
+import ProductosDestacados from '../components/ProductosDestacados';
 
 function InicioPage() {
   return (
     <div>
-      <h1>Bienvenido a Nuestra Tienda</h1>
-      <p>Explora nuestros productos y descubre las mejores ofertas.</p>
+      <SearchModal/>
+      <Carrusel/>
+      <CategoriesSection/>
+      <ProductosDestacados/>
     </div>
   );
 }
