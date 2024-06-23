@@ -6,7 +6,7 @@ function BarraNavegacion() {
     <nav className="navbar navbar-expand-lg navbar-light shadow">
       <div className="container d-flex justify-content-between align-items-center">
         <NavLink className="navbar-brand text-success logo h1 align-self-center" to="/">
-          J&N Fashion
+          J&N Moda
         </NavLink>
         <button className="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
@@ -24,7 +24,7 @@ function BarraNavegacion() {
                 <NavLink className="nav-link" to="/contacto">Contacto</NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/acerca-de">Acerca De</NavLink>
+                <NavLink className="nav-link" to="/acerca-de">Acerca de Nosotros</NavLink>
               </li>
             </ul>
           </div>

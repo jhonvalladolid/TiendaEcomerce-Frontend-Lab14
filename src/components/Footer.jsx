@@ -7,33 +7,31 @@ function Footer() {
             <div className="container">
                 <div className="row">
                     <div className="col-md-4 pt-5">
-                        <h2 className="h2 text-success border-bottom pb-3 border-light logo">Zay Shop</h2>
+                        <h2 className="h2 text-success border-bottom pb-3 border-light logo">J&N Moda</h2>
                         <ul className="list-unstyled text-light footer-link-list">
                             <li>
                                 <i className="fas fa-map-marker-alt fa-fw"></i>
-                                123 Consectetur at ligula 10660
+                                Calle Santa Anita - Lima
                             </li>
                             <li>
                                 <i className="fa fa-phone fa-fw"></i>
-                                <a className="text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
+                                <a className="text-decoration-none" href="tel:917-361-003">917-361-003</a>
                             </li>
                             <li>
                                 <i className="fa fa-envelope fa-fw"></i>
-                                <a className="text-decoration-none" href="mailto:info@company.com">info@company.com</a>
+                                <a className="text-decoration-none" href="mailto:info@jnmoda.com">j&nmoda@gmail.com</a>
                             </li>
                         </ul>
                     </div>
 
                     <div className="col-md-4 pt-5">
-                        <h2 className="h2 text-light border-bottom pb-3 border-light">Productos</h2>
+                        <h2 className="h2 text-light border-bottom pb-3 border-light">Categorías</h2>
                         <ul className="list-unstyled text-light footer-link-list">
-                            <li><NavLink className="text-decoration-none" to="/tienda">Lujo</NavLink></li>
-                            <li><NavLink className="text-decoration-none" to="/tienda">Ropa Deportiva</NavLink></li>
-                            <li><NavLink className="text-decoration-none" to="/tienda">Zapatos para Hombres</NavLink></li>
-                            <li><NavLink className="text-decoration-none" to="/tienda">Zapatos para Mujeres</NavLink></li>
-                            <li><NavLink className="text-decoration-none" to="/tienda">Vestidos Populares</NavLink></li>
-                            <li><NavLink className="text-decoration-none" to="/tienda">Accesorios de Gimnasio</NavLink></li>
-                            <li><NavLink className="text-decoration-none" to="/tienda">Zapatos Deportivos</NavLink></li>
+                            <li><NavLink className="text-decoration-none" to="/tienda">Polos</NavLink></li>
+                            <li><NavLink className="text-decoration-none" to="/tienda">Blusas</NavLink></li>
+                            <li><NavLink className="text-decoration-none" to="/tienda">Chompas</NavLink></li>
+                            <li><NavLink className="text-decoration-none" to="/tienda">Casacas</NavLink></li>
+                            <li><NavLink className="text-decoration-none" to="/tienda">Vestidos y Enterizos</NavLink></li>
                         </ul>
                     </div>
 
@@ -70,7 +68,7 @@ function Footer() {
                         </ul>
                     </div>
                     <div className="col-auto">
-                        <label className="sr-only" for="subscribeEmail">Dirección de Correo</label>
+                        <label className="sr-only" htmlFor="subscribeEmail">Dirección de Correo</label>
                         <div className="input-group mb-2">
                             <input type="text" className="form-control bg-dark border-light" id="subscribeEmail" placeholder="Dirección de Correo" />
                             <div className="input-group-text btn-success text-light">Suscribirse</div>
@@ -80,16 +78,16 @@ function Footer() {
             </div>
 
             <div className="w-100 bg-black py-3">
-                <div className="container">
+                {/* <div className="container">
                     <div className="row pt-2">
                         <div className="col-12">
                             <p className="text-left text-light">
-                                Derechos de Autor &copy; {new Date().getFullYear()} Nombre de la Compañía 
+                                Derechos de Autor &copy; {new Date().getFullYear()} J&N Moda 
                                 | Diseñado por <a rel="sponsored" href="https://templatemo.com" target="_blank">TemplateMo</a>
                             </p>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         </footer>
     );

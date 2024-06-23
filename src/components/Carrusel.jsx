@@ -8,23 +8,20 @@ function Carrusel() {
                 <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="1"></li>
                 <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="2"></li>
             </ol>
-            <div className="carousel-inner">
+            <div className="carousel-inner" style={{ backgroundColor: '#E2E2E2' }}>
                 <div className="carousel-item active">
                     <div className="container">
                         <div className="row p-5">
                             <div className="mx-auto col-md-8 col-lg-6 order-lg-last">
-                                <img className="img-fluid" src="./assets/img/banner_img_01.jpg" alt="Banner 1" />
+                                <img className="img-fluid" style={{ maxHeight: '400px', maxWidth: '100%', marginLeft: '100px' }} src="./assets/img/1.webp" alt="Banner 1" />
                             </div>
                             <div className="col-lg-6 mb-0 d-flex align-items-center">
                                 <div className="text-align-left align-self-center">
-                                    <h1 className="h1 text-success"><b>Zay</b> eCommerce</h1>
-                                    <h3 className="h2">Pequeño y perfecto template para eCommerce</h3>
+                                    <h1 className="h1 text-success"><b>J&N</b> Moda</h1>
+                                    <h3 className="h2">Tendencias de Moda para este Mes</h3>
                                     <p>
-                                        Zay Shop es un template de eCommerce HTML5 CSS con la última versión de Bootstrap 5 (beta 1).
-                                        Este template es 100% gratuito proporcionado por <a rel="sponsored" className="text-success" href="https://templatemo.com" target="_blank">TemplateMo</a>.
-                                        Los créditos de las imágenes pertenecen a <a rel="sponsored" className="text-success" href="https://stories.freepik.com/" target="_blank">Freepik Stories</a>,
-                                        <a rel="sponsored" className="text-success" href="https://unsplash.com/" target="_blank">Unsplash</a> y
-                                        <a rel="sponsored" className="text-success" href="https://icons8.com/" target="_blank">Icons 8</a>.
+                                        Bienvenido a J&N Moda, tu tienda en línea de confianza para encontrar las últimas tendencias en moda y estilo. 
+                                        Explora nuestra colección de productos cuidadosamente seleccionados para ofrecerte lo mejor en ropa y accesorios.
                                     </p>
                                 </div>
                             </div>
@@ -35,15 +32,15 @@ function Carrusel() {
                     <div className="container">
                         <div className="row p-5">
                             <div className="mx-auto col-md-8 col-lg-6 order-lg-last">
-                                <img className="img-fluid" src="./assets/img/banner_img_02.jpg" alt="Banner 2" />
+                            <img className="img-fluid" style={{ maxHeight: '400px', maxWidth: '100%', marginLeft: '100px' }} src="./assets/img/2.webp" alt="Banner 2" />
                             </div>
                             <div className="col-lg-6 mb-0 d-flex align-items-center">
                                 <div className="text-align-left">
-                                    <h1 className="h1">Proident occaecat</h1>
-                                    <h3 className="h2">Aliquip ex ea commodo consequat</h3>
+                                    <h1 className="h1">Nueva Colección</h1>
+                                    <h3 className="h2">Elegancia y Estilo</h3>
                                     <p>
-                                        You are permitted to use this Zay CSS template for your commercial websites.
-                                        You are <strong>not permitted</strong> to re-distribute the template ZIP file in any kind of template collection websites.
+                                        Descubre nuestra nueva colección que combina elegancia y estilo. Diseños únicos que te harán destacar en cualquier ocasión.
+                                        Encuentra tu look perfecto con nosotros.
                                     </p>
                                 </div>
                             </div>
@@ -54,15 +51,15 @@ function Carrusel() {
                     <div className="container">
                         <div className="row p-5">
                             <div className="mx-auto col-md-8 col-lg-6 order-lg-last">
-                                <img className="img-fluid" src="./assets/img/banner_img_03.jpg" alt="Banner 3" />
+                            <img className="img-fluid" style={{ maxHeight: '400px', maxWidth: '100%', marginLeft: '100px' }} src="./assets/img/3.webp" alt="Banner 3" />
                             </div>
                             <div className="col-lg-6 mb-0 d-flex align-items-center">
                                 <div className="text-align-left">
-                                    <h1 className="h1">Repr in voluptate</h1>
-                                    <h3 className="h2">Ullamco laboris nisi ut</h3>
+                                    <h1 className="h1">Ofertas Especiales</h1>
+                                    <h3 className="h2">Descuentos Exclusivos</h3>
                                     <p>
-                                        We bring you 100% free CSS templates for your websites.
-                                        If you wish to support TemplateMo, please make a small contribution via PayPal or tell your friends about our website. Thank you.
+                                        No te pierdas nuestras ofertas especiales con descuentos exclusivos en una amplia variedad de productos. 
+                                        ¡Aprovecha ahora y renueva tu guardarropa con estilo sin gastar de más!
                                     </p>
                                 </div>
                             </div>
