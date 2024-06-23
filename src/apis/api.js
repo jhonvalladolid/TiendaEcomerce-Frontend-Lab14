@@ -85,8 +85,90 @@ const eliminarProducto = async (id) => {
   }
 };
 
+// Funciones CRUD para Clientes
+const obtenerClientes = async () => {
+  try {
+    const { data } = await clienteAPI.get('clientes/');
+    return data;
+  } catch (error) {
+    console.error('Error al obtener clientes:', error);
+    throw error;
+  }
+};
+
+const crearCliente = async (cliente) => {
+  try {
+    const { data } = await clienteAPI.post('clientes/', cliente);
+    return data;
+  } catch (error) {
+    console.error('Error al crear cliente:', error);
+    throw error;
+  }
+};
+
+const actualizarCliente = async (id, cliente) => {
+  try {
+    const { data } = await clienteAPI.put(`clientes/${id}/`, cliente);
+    return data;
+  } catch (error) {
+    console.error('Error al actualizar cliente:', error);
+    throw error;
+  }
+};
+
+const eliminarCliente = async (id) => {
+  try {
+    await clienteAPI.delete(`clientes/${id}/`);
+  } catch (error) {
+    console.error('Error al eliminar cliente:', error);
+    throw error;
+  }
+};
+
+// Funciones CRUD para Ventas
+const obtenerVentas = async () => {
+  try {
+    const { data } = await clienteAPI.get('ventas/');
+    return data;
+  } catch (error) {
+    console.error('Error al obtener ventas:', error);
+    throw error;
+  }
+};
+
+const crearVenta = async (venta) => {
+  try {
+    const { data } = await clienteAPI.post('ventas/', venta);
+    return data;
+  } catch (error) {
+    console.error('Error al crear venta:', error);
+    throw error;
+  }
+};
+
+const actualizarVenta = async (id, venta) => {
+  try {
+    const { data } = await clienteAPI.put(`ventas/${id}/`, venta);
+    return data;
+  } catch (error) {
+    console.error('Error al actualizar venta:', error);
+    throw error;
+  }
+};
+
+const eliminarVenta = async (id) => {
+  try {
+    await clienteAPI.delete(`ventas/${id}/`);
+  } catch (error) {
+    console.error('Error al eliminar venta:', error);
+    throw error;
+  }
+};
+
 // Exportación de todas las funciones para ser usadas en otros componentes
 export {
   obtenerCategorias, crearCategoria, actualizarCategoria, eliminarCategoria,
-  obtenerProductos, crearProducto, actualizarProducto, eliminarProducto
+  obtenerProductos, crearProducto, actualizarProducto, eliminarProducto,
+  obtenerClientes, crearCliente, actualizarCliente, eliminarCliente,
+  obtenerVentas, crearVenta, actualizarVenta, eliminarVenta
 };

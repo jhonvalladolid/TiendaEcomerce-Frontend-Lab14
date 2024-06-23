@@ -1,12 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Producto({ id, imgSrc, nombre, precio, colores, tallas, estrellas }) {
+function Producto({ id, imagen, nombre, precio, categoria }) {
+  const tallas = ['S', 'M', 'L', 'XL']; // Talllas explícitas
+  const estrellas = Math.floor(Math.random() * 5) + 1; // Calificación aleatoria entre 1 y 5
+
   return (
     <div className="col-md-4">
       <div className="card mb-4 product-wap rounded-0">
         <div className="card rounded-0">
-          <img className="card-img rounded-0 img-fluid" src={imgSrc} alt="Producto" />
+          <img className="card-img rounded-0 img-fluid" src={imagen} alt="Producto" />
           <div className="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
             <ul className="list-unstyled">
               <li><Link to={`/producto/${id}`} className="btn btn-success text-white"><i className="far fa-heart"></i></Link></li>
@@ -17,13 +20,9 @@ function Producto({ id, imgSrc, nombre, precio, colores, tallas, estrellas }) {
         </div>
         <div className="card-body">
           <Link to={`/producto/${id}`} className="h3 text-decoration-none">{nombre}</Link>
+          <p className="text-center mb-0">{categoria.nombre}</p>
           <ul className="w-100 list-unstyled d-flex justify-content-between mb-0">
-            <li>{tallas}</li>
-            <li className="pt-2">
-              {colores.map((color, index) => (
-                <span key={index} className={`product-color-dot color-dot-${color} float-left rounded-circle ml-1`}></span>
-              ))}
-            </li>
+            <li>{tallas.join(' / ')}</li>
           </ul>
           <ul className="list-unstyled d-flex justify-content-center mb-1">
             {Array(5).fill().map((_, index) => (
@@ -32,7 +31,7 @@ function Producto({ id, imgSrc, nombre, precio, colores, tallas, estrellas }) {
               </li>
             ))}
           </ul>
-          <p className="text-center mb-0">${precio}</p>
+          <p className="text-center mb-0">S/. {precio}</p>
         </div>
       </div>
     </div>
