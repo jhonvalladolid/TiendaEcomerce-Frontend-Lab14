@@ -18,7 +18,7 @@ Este es el proyecto frontend para J&N Moda, una tienda en línea de moda. Esta a
 2. **Navegar al directorio del proyecto**
 
    ```bash
-   cd jn-moda-frontend
+   cd TiendaEcomerce-Frontend-Lab14
    ```
 
 3. **Instalar dependencias**
