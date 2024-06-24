@@ -13,7 +13,7 @@ function Carrusel() {
                     <div className="container">
                         <div className="row p-5">
                             <div className="mx-auto col-md-8 col-lg-6 order-lg-last">
-                                <img className="img-fluid" style={{ maxHeight: '400px', maxWidth: '100%', marginLeft: '100px' }} src="./assets/img/1.webp" alt="Banner 1" />
+                                <img className="img-fluid" style={{ maxHeight: '400px', maxWidth: '100%', marginLeft: '100px' }} src="./assets/img/c1.png" alt="Banner 1" />
                             </div>
                             <div className="col-lg-6 mb-0 d-flex align-items-center">
                                 <div className="text-align-left align-self-center">
@@ -32,7 +32,7 @@ function Carrusel() {
                     <div className="container">
                         <div className="row p-5">
                             <div className="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img className="img-fluid" style={{ maxHeight: '400px', maxWidth: '100%', marginLeft: '100px' }} src="./assets/img/2.webp" alt="Banner 2" />
+                            <img className="img-fluid" style={{ maxHeight: '400px', maxWidth: '100%', marginLeft: '100px' }} src="./assets/img/c2.png" alt="Banner 2" />
                             </div>
                             <div className="col-lg-6 mb-0 d-flex align-items-center">
                                 <div className="text-align-left">
@@ -51,7 +51,7 @@ function Carrusel() {
                     <div className="container">
                         <div className="row p-5">
                             <div className="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img className="img-fluid" style={{ maxHeight: '400px', maxWidth: '100%', marginLeft: '100px' }} src="./assets/img/3.webp" alt="Banner 3" />
+                            <img className="img-fluid" style={{ maxHeight: '400px', maxWidth: '100%', marginLeft: '100px' }} src="./assets/img/c3.png" alt="Banner 3" />
                             </div>
                             <div className="col-lg-6 mb-0 d-flex align-items-center">
                                 <div className="text-align-left">
