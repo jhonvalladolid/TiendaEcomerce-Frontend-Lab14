@@ -9,7 +9,9 @@ function Producto({ id, imagen, nombre, precio, categoria }) {
     <div className="col-md-4">
       <div className="card mb-4 product-wap rounded-0">
         <div className="card rounded-0">
-          <img className="card-img rounded-0 img-fluid" src={imagen} alt="Producto" />
+          <Link to={`/producto/${id}`}>
+            <img className="card-img rounded-0 img-fluid" src={imagen} alt="Producto" />
+          </Link>
           <div className="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
             <ul className="list-unstyled">
               <li><Link to={`/producto/${id}`} className="btn btn-success text-white"><i className="far fa-heart"></i></Link></li>

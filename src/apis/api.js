@@ -56,6 +56,16 @@ const obtenerProductos = async () => {
   }
 };
 
+const obtenerProductoPorId = async (id) => {
+  try {
+    const { data } = await clienteAPI.get(`productos/${id}/`);
+    return data;
+  } catch (error) {
+    console.error('Error al obtener el producto:', error);
+    throw error;
+  }
+};
+
 const crearProducto = async (producto) => {
   try {
     const { data } = await clienteAPI.post('productos/', producto);
@@ -168,7 +178,7 @@ const eliminarVenta = async (id) => {
 // Exportación de todas las funciones para ser usadas en otros componentes
 export {
   obtenerCategorias, crearCategoria, actualizarCategoria, eliminarCategoria,
-  obtenerProductos, crearProducto, actualizarProducto, eliminarProducto,
+  obtenerProductos, obtenerProductoPorId, crearProducto, actualizarProducto, eliminarProducto,
   obtenerClientes, crearCliente, actualizarCliente, eliminarCliente,
   obtenerVentas, crearVenta, actualizarVenta, eliminarVenta
 };
