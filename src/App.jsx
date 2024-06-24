@@ -9,22 +9,25 @@ import AcercaDePage from './pages/AcercaDePage';
 import ProductoDetallePage from './pages/ProductoDetallePage';
 import Footer from './components/Footer';
 import { CarritoProvider } from './context/CarritoContext';
+import { AuthProvider } from './context/AuthContext';
 
 function App() {
   return (
-    <CarritoProvider>
-      <Router>
-        <BarraNavegacion />
-        <Routes>
-          <Route path="/" element={<InicioPage />} />
-          <Route path="/tienda" element={<TiendaPage />} />
-          <Route path="/contacto" element={<ContactoPage />} />
-          <Route path="/acerca-de" element={<AcercaDePage />} />
-          <Route path="/producto/:id" element={<ProductoDetallePage />} />
-        </Routes>
-        <Footer />
-      </Router>
-    </CarritoProvider>
+    <AuthProvider>
+      <CarritoProvider>
+        <Router>
+          <BarraNavegacion />
+          <Routes>
+            <Route path="/" element={<InicioPage />} />
+            <Route path="/tienda" element={<TiendaPage />} />
+            <Route path="/contacto" element={<ContactoPage />} />
+            <Route path="/acerca-de" element={<AcercaDePage />} />
+            <Route path="/producto/:id" element={<ProductoDetallePage />} />
+          </Routes>
+          <Footer />
+        </Router>
+      </CarritoProvider>
+    </AuthProvider>
   );
 }
 

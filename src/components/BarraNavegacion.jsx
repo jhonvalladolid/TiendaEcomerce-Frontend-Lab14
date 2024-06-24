@@ -1,19 +1,28 @@
 // src/components/BarraNavegacion.jsx
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { CarritoContext } from '../context/CarritoContext';
+import { AuthContext } from '../context/AuthContext';
 
 function BarraNavegacion() {
   const { carrito, eliminarDelCarrito } = useContext(CarritoContext);
+  const { user, login, logout } = useContext(AuthContext);
+  const [credentials, setCredentials] = useState({ username: '', password: '' });
 
-  const calcularSubtotal = () => {
-    return carrito.reduce((total, producto) => total + producto.precio * producto.cantidad, 0);
+  const calcularSubtotal = () => carrito.reduce((total, producto) => total + producto.precio * producto.cantidad, 0);
+  const calcularTotal = () => calcularSubtotal() + 3.90;
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    login(credentials);
   };
 
-  const calcularTotal = () => {
-    const subtotal = calcularSubtotal();
-    const freight = 3.90; // Ejemplo de costo de envío
-    return subtotal + freight;
+  const handleFinalizarCompra = () => {
+    if (!user) {
+      alert('Debe iniciar sesión para finalizar la compra');
+      return;
+    }
+    alert('Compra finalizada con éxito');
   };
 
   return (
@@ -28,27 +37,17 @@ function BarraNavegacion() {
         <div className="align-self-center collapse navbar-collapse flex-fill d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
           <div className="flex-fill">
             <ul className="nav navbar-nav d-flex justify-content-between mx-lg-auto">
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/">Inicio</NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/tienda">Tienda</NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/contacto">Contacto</NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/acerca-de">Acerca de Nosotros</NavLink>
-              </li>
+              <li className="nav-item"><NavLink className="nav-link" to="/">Inicio</NavLink></li>
+              <li className="nav-item"><NavLink className="nav-link" to="/tienda">Tienda</NavLink></li>
+              <li className="nav-item"><NavLink className="nav-link" to="/contacto">Contacto</NavLink></li>
+              <li className="nav-item"><NavLink className="nav-link" to="/acerca-de">Acerca de Nosotros</NavLink></li>
             </ul>
           </div>
           <div className="navbar align-self-center d-flex">
             <div className="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
               <div className="input-group">
                 <input type="text" className="form-control" id="inputMobileSearch" placeholder="Buscar..." />
-                <div className="input-group-text">
-                  <i className="fa fa-fw fa-search"></i>
-                </div>
+                <div className="input-group-text"><i className="fa fa-fw fa-search"></i></div>
               </div>
             </div>
             <a className="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
@@ -58,10 +57,17 @@ function BarraNavegacion() {
               <i className="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
               <span className="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">{carrito.length}</span>
             </a>
-            <a className="nav-icon position-relative text-decoration-none" href="#">
-              <i className="fa fa-fw fa-user text-dark mr-3"></i>
-              <span className="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
-            </a>
+            {user ? (
+              <a className="nav-icon position-relative text-decoration-none" href="#" onClick={logout}>
+                <i className="fa fa-fw fa-user text-dark mr-3"></i>
+                <span className="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">Log Out</span>
+              </a>
+            ) : (
+              <a className="nav-icon position-relative text-decoration-none" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
+                <i className="fa fa-fw fa-user text-dark mr-3"></i>
+                <span className="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">Login</span>
+              </a>
+            )}
           </div>
         </div>
       </div>
@@ -116,12 +122,37 @@ function BarraNavegacion() {
                       <p className="fw-bold">S/. {calcularTotal().toFixed(2)}</p>
                     </div>
                     <div className="d-flex gap-2 mt-3">
-                      <button className="btn btn-success w-100">Finalizar Compra</button>
+                      <button className="btn btn-success w-100" onClick={handleFinalizarCompra}>Finalizar Compra</button>
                       <button className="btn btn-secondary w-100" data-bs-dismiss="modal">Agregar más productos</button>
                     </div>
                   </div>
                 </div>
               )}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Modal de Inicio de Sesión */}
+      <div className="modal fade" id="loginModal" tabIndex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="loginModalLabel">Iniciar Sesión</h5>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div className="modal-body">
+              <form onSubmit={handleLogin}>
+                <div className="mb-3">
+                  <label htmlFor="username" className="form-label">Nombre de Usuario</label>
+                  <input type="text" className="form-control" id="username" value={credentials.username} onChange={(e) => setCredentials({ ...credentials, username: e.target.value })} required />
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="password" className="form-label">Contraseña</label>
+                  <input type="password" className="form-control" id="password" value={credentials.password} onChange={(e) => setCredentials({ ...credentials, password: e.target.value })} required />
+                </div>
+                <button type="submit" className="btn btn-primary">Iniciar Sesión</button>
+              </form>
             </div>
           </div>
         </div>
