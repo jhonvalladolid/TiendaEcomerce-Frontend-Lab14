@@ -2,33 +2,50 @@ import React, { useState, useEffect } from 'react';
 import Producto from './Producto';
 import { obtenerProductos } from '../../apis/api';
 
-function ListaProductos({ categoriaSeleccionada, paginaActual, setPaginaActual }) {
+function ListaProductos({ categoriaSeleccionada, paginaActual, setPaginaActual, filtro, busqueda }) {
   const [productos, setProductos] = useState([]);
+  const [productosFiltrados, setProductosFiltrados] = useState([]);
   const productosPorPagina = 6;
 
   useEffect(() => {
     const fetchProductos = async () => {
       try {
         const productosObtenidos = await obtenerProductos();
-        if (categoriaSeleccionada) {
-          const productosFiltrados = productosObtenidos.filter(producto => producto.categoria.id === categoriaSeleccionada.id);
-          setProductos(productosFiltrados);
-        } else {
-          setProductos(productosObtenidos);
-        }
+        setProductos(productosObtenidos);
       } catch (error) {
         console.error('Error al obtener productos:', error);
       }
     };
 
     fetchProductos();
-    setPaginaActual(1); // Resetear a la primera página al cambiar de categoría
-  }, [categoriaSeleccionada]);
+  }, []);
+
+  useEffect(() => {
+    let productosFiltrados = productos;
+
+    if (categoriaSeleccionada) {
+      productosFiltrados = productosFiltrados.filter(producto => producto.categoria.id === categoriaSeleccionada.id);
+    }
+
+    if (filtro && filtro !== 'Todos') {
+      productosFiltrados = productosFiltrados.filter(producto => producto.nombre.toLowerCase().includes(filtro.toLowerCase()));
+    }
+
+    if (busqueda) {
+      productosFiltrados = productosFiltrados.filter(producto => 
+        producto.nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
+        producto.descripcion.toLowerCase().includes(busqueda.toLowerCase())
+      );
+    }
+
+    setProductosFiltrados(productosFiltrados);
+    setPaginaActual(1); // Resetear a la primera página al cambiar de filtro o búsqueda
+  }, [categoriaSeleccionada, filtro, busqueda, productos]);
 
   // Productos a mostrar en la página actual
   const indexOfLastProduct = paginaActual * productosPorPagina;
   const indexOfFirstProduct = indexOfLastProduct - productosPorPagina;
-  const productosActuales = productos.slice(indexOfFirstProduct, indexOfLastProduct);
+  const productosActuales = productosFiltrados.slice(indexOfFirstProduct, indexOfLastProduct);
 
   return (
     <>
@@ -39,7 +56,7 @@ function ListaProductos({ categoriaSeleccionada, paginaActual, setPaginaActual }
       </div>
       <div className="row">
         <ul className="pagination pagination-lg justify-content-end">
-          {Array.from({ length: Math.ceil(productos.length / productosPorPagina) }, (_, index) => (
+          {Array.from({ length: Math.ceil(productosFiltrados.length / productosPorPagina) }, (_, index) => (
             <li 
               key={index} 
               className={`page-item ${index + 1 === paginaActual ? 'active' : ''}`}
