@@ -14,7 +14,18 @@ function ProductosDestacados() {
           ...producto,
           estrellas: Math.floor(Math.random() * 5) + 1 // Calificación aleatoria entre 1 y 5
         }));
-        setProductos(productosConEstrellas);
+        // Tomar solo los primeros 10 productos
+        const primerosDiezProductos = productosConEstrellas.slice(0, 10);
+        // Seleccionar aleatoriamente 3 productos de los primeros 10
+        const productosAleatorios = [];
+        while (productosAleatorios.length < 3) {
+          const randomIndex = Math.floor(Math.random() * primerosDiezProductos.length);
+          const productoAleatorio = primerosDiezProductos[randomIndex];
+          if (!productosAleatorios.includes(productoAleatorio)) {
+            productosAleatorios.push(productoAleatorio);
+          }
+        }
+        setProductos(productosAleatorios);
       } catch (error) {
         console.error('Error al obtener productos:', error);
       }
