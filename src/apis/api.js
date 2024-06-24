@@ -56,12 +56,22 @@ const obtenerProductos = async () => {
   }
 };
 
+const obtenerProductosPorCategoria = async (categoriaId) => {
+  try {
+    const { data } = await clienteAPI.get(`productos/?categoria=${categoriaId}`);
+    return data;
+  } catch (error) {
+    console.error('Error al obtener productos por categoría:', error);
+    throw error;
+  }
+};
+
 const obtenerProductoPorId = async (id) => {
   try {
     const { data } = await clienteAPI.get(`productos/${id}/`);
     return data;
   } catch (error) {
-    console.error('Error al obtener el producto:', error);
+    console.error('Error al obtener producto por id:', error);
     throw error;
   }
 };
@@ -178,7 +188,7 @@ const eliminarVenta = async (id) => {
 // Exportación de todas las funciones para ser usadas en otros componentes
 export {
   obtenerCategorias, crearCategoria, actualizarCategoria, eliminarCategoria,
-  obtenerProductos, obtenerProductoPorId, crearProducto, actualizarProducto, eliminarProducto,
+  obtenerProductos, obtenerProductosPorCategoria, obtenerProductoPorId, crearProducto, actualizarProducto, eliminarProducto,
   obtenerClientes, crearCliente, actualizarCliente, eliminarCliente,
   obtenerVentas, crearVenta, actualizarVenta, eliminarVenta
 };

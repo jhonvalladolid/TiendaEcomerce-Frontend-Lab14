@@ -163,7 +163,7 @@ function ProductoDetallePage() {
           </div>
         </div>
       </section>
-      <ProductosRelacionados />
+      <ProductosRelacionados categoriaId={producto.categoria.id} />
     </>
   );
 }

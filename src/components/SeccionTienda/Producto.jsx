@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Producto({ id, imagen, nombre, precio, categoria }) {
+function Producto({ id, imagen, nombre, precio, categoria, colSize = 4 }) {
   const tallas = ['S', 'M', 'L', 'XL']; // Talllas explícitas
   const estrellas = Math.floor(Math.random() * 5) + 1; // Calificación aleatoria entre 1 y 5
 
   return (
-    <div className="col-md-4">
+    <div className={`col-md-${colSize}`}>
       <div className="card mb-4 product-wap rounded-0">
         <div className="card rounded-0">
           <Link to={`/producto/${id}`}>
