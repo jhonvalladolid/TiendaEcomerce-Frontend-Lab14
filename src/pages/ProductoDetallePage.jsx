@@ -1,12 +1,16 @@
-import React, { useState, useEffect } from 'react';
+// src/pages/ProductoDetallePage.jsx
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import ProductosRelacionados from '../components/SeccionTienda/ProductosRelacionados';
-import { obtenerProductoPorId } from '../apis/api';
+import { obtenerProductoPorId, actualizarStockProducto } from '../apis/api';
+import { CarritoContext } from '../context/CarritoContext';
 
 function ProductoDetallePage() {
   const { id } = useParams();
   const [producto, setProducto] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [cantidad, setCantidad] = useState(1);
+  const { añadirAlCarrito } = useContext(CarritoContext);
   const marcas = ['Easy Wear', 'ModaPlus', 'EstiloLibre', 'TrendSetter', 'FashionLine'];
 
   useEffect(() => {
@@ -26,6 +30,30 @@ function ProductoDetallePage() {
   const marcaAleatoria = marcas[Math.floor(Math.random() * marcas.length)];
   const calificacionAleatoria = (Math.random() * 5).toFixed(1);
   const comentariosAleatorios = Math.floor(Math.random() * 100) + 1;
+
+  const handleCantidadChange = (delta) => {
+    setCantidad((prevCantidad) => Math.max(1, prevCantidad + delta));
+  };
+
+  const handleAñadirAlCarrito = () => {
+    añadirAlCarrito({ ...producto, cantidad });
+  };
+
+  const handleComprar = async () => {
+    if (cantidad > producto.stock) {
+      alert('No hay suficiente stock disponible');
+      return;
+    }
+
+    try {
+      const nuevoStock = producto.stock - cantidad;
+      await actualizarStockProducto(producto.id, nuevoStock);
+      alert('Compra realizada con éxito');
+      setProducto({ ...producto, stock: nuevoStock });
+    } catch (error) {
+      console.error('Error al realizar la compra:', error);
+    }
+  };
 
   if (!producto) {
     return <p>Cargando...</p>;
@@ -121,41 +149,26 @@ function ProductoDetallePage() {
                     <li>Perfecto para cualquier ocasión</li>
                   </ul>
 
-                  <form action="" method="GET">
-                    <input type="hidden" name="product-title" value={producto.nombre} />
-                    <div className="row">
-                      <div className="col-auto">
-                        <ul className="list-inline pb-3">
-                          <li className="list-inline-item">Tamaño:
-                            <input type="hidden" name="product-size" id="product-size" value="S" />
-                          </li>
-                          <li className="list-inline-item"><span className="btn btn-success btn-size">S</span></li>
-                          <li className="list-inline-item"><span className="btn btn-success btn-size">M</span></li>
-                          <li className="list-inline-item"><span className="btn btn-success btn-size">L</span></li>
-                          <li className="list-inline-item"><span className="btn btn-success btn-size">XL</span></li>
-                        </ul>
-                      </div>
-                      <div className="col-auto">
-                        <ul className="list-inline pb-3">
-                          <li className="list-inline-item text-right">
-                            Cantidad
-                            <input type="hidden" name="product-quantity" id="product-quantity" value="1" />
-                          </li>
-                          <li className="list-inline-item"><span className="btn btn-success" id="btn-minus">-</span></li>
-                          <li className="list-inline-item"><span className="badge bg-secondary" id="var-value">1</span></li>
-                          <li className="list-inline-item"><span className="btn btn-success" id="btn-plus">+</span></li>
-                        </ul>
-                      </div>
+                  <div className="row">
+                    <div className="col-auto">
+                      <ul className="list-inline pb-3">
+                        <li className="list-inline-item">Cantidad:
+                          <input type="hidden" name="product-quantity" id="product-quantity" value="1" />
+                        </li>
+                        <li className="list-inline-item"><span className="btn btn-success" onClick={() => handleCantidadChange(-1)}>-</span></li>
+                        <li className="list-inline-item"><span className="badge bg-secondary" id="var-value">{cantidad}</span></li>
+                        <li className="list-inline-item"><span className="btn btn-success" onClick={() => handleCantidadChange(1)}>+</span></li>
+                      </ul>
                     </div>
-                    <div className="row pb-3">
-                      <div className="col d-grid">
-                        <button type="submit" className="btn btn-success btn-lg" name="submit" value="buy">Comprar</button>
-                      </div>
-                      <div className="col d-grid">
-                        <button type="submit" className="btn btn-success btn-lg" name="submit" value="addtocard">Añadir al Carrito</button>
-                      </div>
+                  </div>
+                  <div className="row pb-3">
+                    <div className="col d-grid">
+                      <button type="button" className="btn btn-success btn-lg" onClick={handleComprar}>Comprar</button>
                     </div>
-                  </form>
+                    <div className="col d-grid">
+                      <button type="button" className="btn btn-success btn-lg" onClick={handleAñadirAlCarrito}>Añadir al Carrito</button>
+                    </div>
+                  </div>
 
                 </div>
               </div>

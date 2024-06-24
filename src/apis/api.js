@@ -105,6 +105,16 @@ const eliminarProducto = async (id) => {
   }
 };
 
+const actualizarStockProducto = async (id, nuevoStock) => {
+  try {
+    const { data } = await clienteAPI.patch(`productos/${id}/`, { stock: nuevoStock });
+    return data;
+  } catch (error) {
+    console.error('Error al actualizar el stock del producto:', error);
+    throw error;
+  }
+};
+
 // Funciones CRUD para Clientes
 const obtenerClientes = async () => {
   try {
@@ -188,7 +198,7 @@ const eliminarVenta = async (id) => {
 // Exportación de todas las funciones para ser usadas en otros componentes
 export {
   obtenerCategorias, crearCategoria, actualizarCategoria, eliminarCategoria,
-  obtenerProductos, obtenerProductosPorCategoria, obtenerProductoPorId, crearProducto, actualizarProducto, eliminarProducto,
+  obtenerProductos, obtenerProductosPorCategoria, obtenerProductoPorId, crearProducto, actualizarProducto, eliminarProducto, actualizarStockProducto,
   obtenerClientes, crearCliente, actualizarCliente, eliminarCliente,
   obtenerVentas, crearVenta, actualizarVenta, eliminarVenta
 };
