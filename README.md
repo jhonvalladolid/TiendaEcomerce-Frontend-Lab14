@@ -1,3 +1,4 @@
+```markdown
 # J&N Moda - Frontend
 
 Este es el proyecto frontend para J&N Moda, una tienda en línea de moda. Esta aplicación ha sido desarrollada con React y Vite.
